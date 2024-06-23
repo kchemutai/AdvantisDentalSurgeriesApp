@@ -24,3 +24,5 @@ their appointments.
 A dentist cannot be given more than 5 appointments in any given week. The system should
 prevent a Patient from requesting a new appointment if they have an outstanding, unpaid
 bill for dental service they have received.
+
+Class Diagram
