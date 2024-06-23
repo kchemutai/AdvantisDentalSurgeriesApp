@@ -3,6 +3,7 @@ package miu.edu.ADS.service;
 
 import miu.edu.ADS.model.Dentist;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface DentistService {
@@ -11,4 +12,5 @@ public interface DentistService {
 	Optional<Dentist> findDentistById(Integer dentistId);
 	Optional<Dentist> updateExistingDentist(Integer id, Dentist dentist);
 	void deleteDentist(Integer dentistId);
+	Optional<List<Dentist>> findAllDentists();
 }

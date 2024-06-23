@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class SurgeryServiceImpl implements SurgeryService {
 	
 	private final SurgeryRepository surgeryRepository;
@@ -48,6 +47,7 @@ public class SurgeryServiceImpl implements SurgeryService {
 	@Override
 	public void deleteSurgery(Integer id) {
 		surgeryRepository.findById(id).orElseThrow(()->new SurgeryNotFoundException("Delete failed!, Surgery with Id "+id+" not found"));
+		surgeryRepository.deleteById(id);
 	}
 
 	@Override

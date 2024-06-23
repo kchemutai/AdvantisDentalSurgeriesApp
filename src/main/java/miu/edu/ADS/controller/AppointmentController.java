@@ -62,9 +62,7 @@ public class AppointmentController {
 
     @PostMapping
     public ResponseEntity<AppointmentResponse> createAppointment(@RequestBody AppointmentRequest appointmentRequest) {
-        Optional<Appointment> appointment = appointmentService.createNewAppointment(
-                appointmentAdapter.requestToAppointment(appointmentRequest));
-
+        Optional<Appointment> appointment = appointmentService.createNewAppointment(appointmentRequest);
         return ResponseEntity.ok().body(appointmentAdapter.appointmentToResponse(appointment.get()));
     }
 

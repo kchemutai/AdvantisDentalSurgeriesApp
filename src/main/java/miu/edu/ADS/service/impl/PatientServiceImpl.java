@@ -4,12 +4,15 @@ import miu.edu.ADS.exception.patient.PatientNotFoundException;
 import miu.edu.ADS.model.Patient;
 import miu.edu.ADS.repository.PatientRepository;
 import miu.edu.ADS.service.PatientService;
+import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,9 +21,13 @@ import java.util.Optional;
 public class PatientServiceImpl implements PatientService {
 
 	private final PatientRepository patientRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public Optional<Patient> savePatient(Patient patient) {
+		patient.getUser().setPassword(passwordEncoder.encode(
+				patient.getUser().getPassword()
+		));
 		return Optional.of(patientRepository.save(patient));
 	}
 
@@ -51,5 +58,14 @@ public class PatientServiceImpl implements PatientService {
 	public void deletePatient(Integer patientId) {
 		patientRepository.findById(patientId).orElseThrow(()->new PatientNotFoundException("Delete failed!, Patient with Id "+patientId+" not found"));
 		patientRepository.deleteById(patientId);
+	}
+
+	@Override
+	public Optional<List<Patient>> findAllPatients() {
+		List<Patient> patients = patientRepository.findAll();
+		if (patients.isEmpty()) {
+			return Optional.empty();
+		}
+		return Optional.of(patients);
 	}
 }

@@ -67,27 +67,27 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.METHOD_NOT_ALLOWED);
     }
 
-//    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-//    @ExceptionHandler(BadCredentialsException.class)
-//    public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException e) {
-//        return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
-//    }
-//
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    @ExceptionHandler(ServerErrorException.class)
-//    public ResponseEntity<String> handleServerErrorException(ServerErrorException e) {
-//        return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
-//
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<String> handleAllOtherExceptions(Exception e) {
-//        return new ResponseEntity<>("An unexpected error occurred: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
-//
-//    @ExceptionHandler(ExpiredJwtException.class)
-//    public ResponseEntity<String> handleJwtTokenExpiredException(ExpiredJwtException e) {
-//        return new ResponseEntity<>("JWT token has expired", HttpStatus.UNAUTHORIZED);
-//    }
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException e) {
+        return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(ServerErrorException.class)
+    public ResponseEntity<String> handleServerErrorException(ServerErrorException e) {
+        return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleAllOtherExceptions(Exception e) {
+        return new ResponseEntity<>("An unexpected error occurred: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<String> handleJwtTokenExpiredException(ExpiredJwtException e) {
+        return new ResponseEntity<>("JWT token has expired", HttpStatus.UNAUTHORIZED);
+    }
 
 }

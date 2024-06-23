@@ -5,6 +5,7 @@ import miu.edu.ADS.exception.user.UserNotFoundException;
 import miu.edu.ADS.model.User;
 import miu.edu.ADS.repository.UserRepository;
 import miu.edu.ADS.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,9 +15,11 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<User> save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return Optional.of(userRepository.save(user));
     }
 

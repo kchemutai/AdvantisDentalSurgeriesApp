@@ -34,14 +34,18 @@ public class AppConfig {
         // Mapping nested objects for AppointmentRequest to Appointment
         modelMapper.typeMap(AppointmentRequest.class, Appointment.class)
                 .addMappings(mapper -> {
-                    mapper.map(AppointmentRequest::getSurgery, Appointment::setSurgery);
-                    mapper.map(AppointmentRequest::getPatient, Appointment::setPatient);
-                    mapper.map(AppointmentRequest::getDentist, Appointment::setDentist);
+                    mapper.map(AppointmentRequest::getDate, Appointment::setDate);
+                    mapper.map(AppointmentRequest::getTime, Appointment::setTime);
+                    mapper.map(AppointmentRequest::getStatus, Appointment::setStatus);
+                    // The lookup will be handled in the service
                 });
 
         // Mapping nested objects for Appointment to AppointmentResponse
         modelMapper.typeMap(Appointment.class, AppointmentResponse.class)
                 .addMappings(mapper -> {
+                    mapper.map(Appointment::getDate, AppointmentResponse::setDate);
+                    mapper.map(Appointment::getTime, AppointmentResponse::setTime);
+                    mapper.map(Appointment::getStatus, AppointmentResponse::setStatus);
                     mapper.map(Appointment::getSurgery, AppointmentResponse::setSurgery);
                     mapper.map(Appointment::getPatient, AppointmentResponse::setPatient);
                     mapper.map(Appointment::getDentist, AppointmentResponse::setDentist);

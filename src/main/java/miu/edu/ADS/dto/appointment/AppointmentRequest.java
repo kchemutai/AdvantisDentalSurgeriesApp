@@ -28,12 +28,12 @@ public class AppointmentRequest {
     @NotNull(message = "Status cannot be null")
     private AppointmentStatus status;
 
-    @NotNull(message = "Surgery cannot be null")
-    private Surgery surgery;
+    @NotNull(message = "Surgery Id cannot be null")
+    private Integer surgeryId;
 
-    @NotNull(message = "Patient cannot be null")
-    private Patient patient;
+    @NotNull(message = "Patient Id cannot be null")
+    private Integer patientId;
 
-    @NotNull(message = "Dentist cannot be null")
-    private Dentist dentist;
+    @NotNull(message = "Dentist Id cannot be null")
+    private Integer dentistId;
 }

@@ -3,6 +3,7 @@ package miu.edu.ADS.service;
 
 import miu.edu.ADS.model.Patient;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
@@ -10,4 +11,5 @@ public interface PatientService {
 	Optional<Patient> findPatientById(Integer patientId);
 	Optional<Patient> updateExistingPatient(Integer id, Patient patient);
 	void deletePatient(Integer patientId);
+	Optional<List<Patient>> findAllPatients();
 }
